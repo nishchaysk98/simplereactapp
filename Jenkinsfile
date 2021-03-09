@@ -1,18 +1,14 @@
 pipeline{
     agent{
-        dockerfile true
+        docker {
+            image 'node:alpine'
+        }
     }
     stages{ 
-        stage('build for testing purpose'){
+        stage('testing'){
             steps{
-                sh "docker build -f Dockerfile.dev -t simplereactapp ."
+                sh "npm run test"
             }        
-        }
-
-        stage('build for deployment purpose'){
-            steps{
-                sh "docker run -e CI=true simplereactapp npm run test"
-            }
         }
     }
 }
