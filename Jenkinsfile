@@ -1,6 +1,6 @@
 pipeline{
     agent{
-        docker
+        dockerfile true
     }
     stages{ 
         stage('build for testing purpose'){
