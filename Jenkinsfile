@@ -10,18 +10,8 @@ pipeline{
     stages{ 
         stage('Build') {
             steps {
-                sh 'npm install'  
+                docker.build("my-image")
             }
-        }
-        stage('testing'){
-            steps{
-                sh "npm run test"
-            }        
-        }
-    }
-    post {
-        success {
-            echo "hi"       
         }
     }
 }
