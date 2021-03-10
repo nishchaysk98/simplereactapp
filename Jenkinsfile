@@ -6,11 +6,14 @@ pipeline{
     }
     environment {
         CI = 'true' 
+        dockerImage = ''
     }
     stages{ 
         stage('Build') {
             steps {
-                docker.build("my-image")
+                script{
+                   dockerImage = docker.build("my-image")
+                }
             }
         }
     }
